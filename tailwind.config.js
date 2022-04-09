@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       fontFamily: {
         Babylonica: ["Babylonica", "cursive"],
+        Lora: ["Lora", "serif"],
       },
     },
   },

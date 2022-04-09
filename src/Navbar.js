@@ -17,12 +17,14 @@ export default function Navbar() {
         <div>Menu5</div>
       </div>
       <div className=" md:hidden flex items-center justify-end text-3xl ">
-        <GiHamburgerMenu className="inline" />
+        <button className="cursor-pointer">
+          <GiHamburgerMenu className="inline bg-green-200 p-1" />
+        </button>
       </div>
       <div className="w-full  col-span-2 lg:col-span-1 flex items-center justify-center relative">
         <input
           type="text"
-          className="border px-4 py-2 rounded-[15px] w-[90%] my-4 shadow-md"
+          className="border px-4 py-2 rounded-[15px] w-[90%] my-4 shadow-md focus:outline-green-500"
           placeholder="search recipes . . . ."
         />
         <button className="absolute right-[5%] rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2">
