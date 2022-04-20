@@ -14,5 +14,3 @@ function App() {
 }
 
 export default App;
-
-// color theme ===> https://dribbble.com/shots/15223754-Food-Cooking-Inspiration-Website
