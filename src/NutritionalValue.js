@@ -5,7 +5,7 @@ export default function NutritionalValue() {
   return (
     <div className="md:w-[50%] my-12 lg:my-24 mx-auto  ">
       <h1 className="text-2xl md:text-3xl capitalize text-center">
-        Get Nutritional info
+        Track your Nutrition
       </h1>
       <div className="flex flex-col md:flex-row items-center  my-4 ">
         <div className="lg:ml-8 w-full">
@@ -15,21 +15,21 @@ export default function NutritionalValue() {
           />
         </div>
 
-        <div className=" mx-4 w-full ">
-          <div>
-            <h className="text-slate-500 lg:text-xl">Portion</h>
+        <div className="flex  justify-center md:block mx-4 w-full ">
+          <div className="mx-2">
+            <h4 className="text-slate-500 lg:text-xl ">Portion</h4>
             <p className="text-xl lg:text-2xl">455 kcal</p>
           </div>
-          <div>
-            <h className="text-slate-500 lg:text-xl">Carbs</h>
+          <div className="mx-2">
+            <h4 className="text-slate-500 lg:text-xl">Carbs</h4>
             <p className="text-xl lg:text-2xl">64.5 g</p>
           </div>
-          <div>
-            <h className="text-slate-500 lg:text-xl">Protin</h>
+          <div className="mx-2">
+            <h4 className="text-slate-500 lg:text-xl">Protin</h4>
             <p className="text-xl lg:text-2xl">8 g</p>
           </div>
-          <div>
-            <h className="text-slate-500 lg:text-xl">Fat</h>
+          <div className="mx-2">
+            <h4 className="text-slate-500 lg:text-xl">Fat</h4>
             <p className="text-xl lg:text-2xl">16 g</p>
           </div>
         </div>

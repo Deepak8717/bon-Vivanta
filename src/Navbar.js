@@ -10,7 +10,9 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center justify-around text-xl">
-        <div>Home</div>
+        <div>
+          <button>Home</button>
+        </div>
         <div>Menu</div>
         <div>Contact</div>
       </div>
