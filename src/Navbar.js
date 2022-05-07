@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 
-export default function Navbar() {
+export default function Navbar({ sethome, setmenu }) {
   return (
     <div className="grid  grid-cols-2 lg:grid-cols-3 ">
       <div className="  font-Babylonica text-6xl md:text-7xl font-bold text-slate-800 ">
@@ -10,11 +10,13 @@ export default function Navbar() {
       </div>
 
       <div className="hidden md:flex items-center justify-around text-xl">
-        <div>
-          <button>Home</button>
+        <div className="cursor-pointer" onClick={() => sethome()}>
+          Home
         </div>
-        <div>Menu</div>
-        <div>Contact</div>
+        <div className="cursor-pointer" onClick={() => setmenu()}>
+          Menu
+        </div>
+        <div className="cursor-pointer">Contact</div>
       </div>
       <div className=" md:hidden flex items-center justify-end text-3xl ">
         <button className="cursor-pointer">

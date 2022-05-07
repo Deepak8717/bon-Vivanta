@@ -8,8 +8,8 @@ export default function Hero() {
         <h1 className=" uppercase text-2xl md:text-4xl lg:text-6xl md:my-2">
           a taste of home
         </h1>
-        <p className="text-lg md:text-xl lg:text-2xl md:my-2 leading-6">
-          Your go to meal planner to have healthy balance of diet and taste.
+        <p className="text-lg md:text-lg lg:text-xl md:my-2 leading-6 text-slate-500">
+          Your go to ideas of recipes with healthy balance of taste and Nutrition from around the world.
         </p>
         <button className="w-[50%] max-w-[10rem] my-2 md:w-[50%] text-xl text-xl p-2 rounded-md bg-green-600 text-white">
           View menu
