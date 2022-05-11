@@ -1,4 +1,4 @@
-import { ReactComponent as CookingSvg } from "./assets/images/Cooking.svg";
+import { ReactComponent as CookingSvg } from "../assets/images/Cooking.svg";
 import React from "react";
 
 export default function Hero() {

@@ -1,5 +1,5 @@
 import React from "react";
-import NutritionalValueImage from "../src/assets/images/Nutritional-value.png";
+import NutritionalValueImage from "../assets/images/Nutritional-value.png";
 
 export default function NutritionalValue() {
   return (
