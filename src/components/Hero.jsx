@@ -10,14 +10,15 @@ export default function Hero() {
           a taste of home
         </h1>
         <p className="text-lg md:text-lg lg:text-xl md:my-2 leading-6 text-slate-500">
-          Your go to ideas of recipes with healthy balance of taste and Nutrition from around the world.
+          Your go to ideas of recipes with healthy balance of taste and
+          Nutrition from around the world.
         </p>
-        <Link to="/menu">
-        <button className="w-[50%] max-w-[10rem] my-2 md:w-[50%] text-xl text-xl p-2 rounded-md bg-green-600 text-white">
+        <Link
+          to="/menu"
+          className="w-[50%] max-w-[10rem] my-2 md:w-[50%] text-xl text-xl p-2 rounded-md bg-green-600 text-white text-center"
+        >
           View Menu
-          </button>
         </Link>
-        
       </div>
       <CookingSvg className="w-[85%] md:w-[40%] lg:w-[35%] xl:w-[25%]  h-[20vh] md:h-[35vh] lg:h-[40vh] py-2  " />
     </div>

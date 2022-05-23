@@ -8,18 +8,18 @@ const app_Key = process.env.REACT_APP_API_KEY;
 
 export default function Menu() {
   const [recipes, setRecipes] = useState([]);
-  const [activeMenu, setActiveMenu] = useState();
+  const [activeMenu, setActiveMenu] = useState("breakfast");
   const activeMenuHandler = (menu) => {
     setActiveMenu(menu);
   };
-  const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
-  useEffect(() => {
-    axios.get(baseURL).then((response) => {
-      // console.log(response.data.hits)
-      setRecipes(response.data.hits);
-      localStorage.setItem("recipes", JSON.stringify(response.data.hits));
-    });
-  }, [activeMenu]);
+  // const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
+  // useEffect(() => {
+  //   axios.get(baseURL).then((response) => {
+  //     console.log(response.data.hits);
+  //     setRecipes(response.data.hits);
+  //     localStorage.setItem("recipes", JSON.stringify(response.data.hits));
+  //   });
+  // }, [activeMenu]);
   const data = JSON.parse(localStorage.getItem("recipes"));
 
   return (

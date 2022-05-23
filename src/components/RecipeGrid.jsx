@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const RecipeGrid = ({ recipeData }) => {
   return (
@@ -16,7 +16,19 @@ const RecipeGrid = ({ recipeData }) => {
                 <h1 className="w-[70%] h-8 text-xl overflow-hidden">
                   {recipeItem.recipe.label}
                 </h1>
-                <div className="border h-8 p-1 mx-2 bg-green-600 leading-4 rounded-lg text-white  capitalize">
+                <div
+                  className={`border h-8 p-1 mx-2 leading-4 rounded-lg text-white  capitalize ${
+                    recipeItem.recipe.mealType == "breakfast"
+                      ? "bg-green-600"
+                      : recipeItem.recipe.mealType == "lunch/dinner"
+                      ? "bg-orange-500"
+                      : recipeItem.recipe.mealType == "snack"
+                      ? "bg-yellow-300 text-black"
+                      : recipeItem.recipe.mealType == "teatime"
+                      ? "bg-amber-500"
+                      : ""
+                  }`}
+                >
                   {recipeItem.recipe.mealType}
                 </div>
               </div>
