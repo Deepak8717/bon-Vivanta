@@ -25,7 +25,7 @@ export default function Menu() {
   return (
     <div className="w-full md:w-11/12 max-w-screen-2xl font-Lora rounded-lg md:rounded-[30px] px-4 md:px-12 py-4 md:py-8 bg-white mx-auto my-0 md:my-4 md:my-8">
       <Navbar />
-      <div className="flex my-2">
+      <div className="flex my-2 h-full">
         <Sidebar activeMenu={activeMenuHandler} />
         <RecipeGrid recipeData={data} />
       </div>

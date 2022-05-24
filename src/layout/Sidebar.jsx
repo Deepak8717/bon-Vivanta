@@ -5,10 +5,11 @@ import { BiDish } from "react-icons/bi";
 // import { icons } from "react-icons/lib";
 
 const Sidebar = ({ activeMenu }) => {
+  //sidebar
   const sideMenu = {
     mealType: ["breakfast", "Lunch", "Snack", "teatime"],
     cuisineType: [
-      "merican",
+      "american",
       "asian",
       "british",
       "caribbean",
@@ -19,11 +20,13 @@ const Sidebar = ({ activeMenu }) => {
     ],
     dishType: ["side dish", "soup", "starter", "sweets"],
   };
+
   return (
-    <div className="w-72  h-[70vh]  lg:ml-4 xl:ml-8 px-4  menu-scrollbar mx-2 hidden lg:block ">
+    <div className="w-72 lg:ml-4 xl:ml-8 px-4  menu-scrollbar mx-2 hidden lg:block ">
       {Object.entries(sideMenu).map((menuItem) => {
         const [key, value] = menuItem;
         return (
+          //render the Category along with corresponding icon
           <>
             <div className="flex bg-green-600 p-1 rounded  mx-auto my-2">
               {key === "mealType" ? (
@@ -40,6 +43,7 @@ const Sidebar = ({ activeMenu }) => {
 
             {value.map((subMenu) => {
               return (
+                //render subCategory respect to main category
                 <div className="flex  p-1 rounded shadow-md mx-auto px-5 cursor-pointer">
                   <div
                     className="flex leading-8  text-lg capitalize"

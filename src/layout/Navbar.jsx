@@ -5,7 +5,7 @@ import { FiSearch } from "react-icons/fi";
 
 export default function Navbar({ sethome, setmenu }) {
   return (
-    <div className="grid  grid-cols-6  md:grid-cols-12 ">
+    <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
       <div className="flex align-center justify-center  col-span-1  ">
         <button className="cursor-pointer ">
