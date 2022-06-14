@@ -4,11 +4,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 
 export default function Navbar() {
+  const [hamburger, setHamburger] = useState(false);
+  const handleHamburger = () => {
+    setHamburger(!hamburger);
+  };
+  console.log(hamburger);
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
       <div className="flex align-center justify-center  col-span-1  ">
-        <button className="cursor-pointer ">
+        <button className="cursor-pointer" onClick={handleHamburger}>
           <GiHamburgerMenu className="inline bg-green-200 p-1 text-3xl" />
         </button>
       </div>

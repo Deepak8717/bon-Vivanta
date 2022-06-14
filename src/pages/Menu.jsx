@@ -18,18 +18,18 @@ export default function Menu() {
     setActiveMenu(menu);
   };
 
-  useEffect(() => {
-    const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
-    axios
-      .get(baseURL)
-      .then((response) => {
-        setRecipes(response.data.hits);
-      })
-      .catch(console.error);
-  }, [activeMenu]);
+  // useEffect(() => {
+  //   const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
+  //   axios
+  //     .get(baseURL)
+  //     .then((response) => {
+  //       setRecipes(response.data.hits);
+  //     })
+  //     .catch(console.error);
+  // }, [activeMenu]);
 
   return (
-    <div className="w-full md:w-11/12 max-w-screen-2xl font-Lora rounded-lg md:rounded-[30px] px-4 md:px-12 py-4 md:py-8 bg-white mx-auto my-0 md:my-4 md:my-8">
+    <>
       <Navbar />
       <div className="flex my-2 h-full">
         <Sidebar
@@ -38,6 +38,6 @@ export default function Menu() {
         />
         <RecipeGrid recipeData={recipes} />
       </div>
-    </div>
+    </>
   );
 }

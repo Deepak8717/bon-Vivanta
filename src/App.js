@@ -1,12 +1,14 @@
+import { Outlet } from "react-router-dom";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
+import HamburgerMenu from "./layout/HamburgerMenu";
 
 import "./App.css";
 function App() {
   return (
-    <div className="w-full md:w-11/12 max-w-screen-2xl font-Lora rounded-lg md:rounded-[30px] px-4 md:px-12 py-4 md:py-8 bg-white mx-auto my-0 md:my-4 md:my-8">
-      <Navbar />
-      <Home />
+    <div className="relative w-full md:w-11/12 max-w-screen-2xl font-Lora rounded-lg md:rounded-[30px] px-4 md:px-12 py-4 md:py-8 bg-white mx-auto my-0 md:my-4 md:my-8">
+      <HamburgerMenu />
+      <Outlet />
     </div>
   );
 }
