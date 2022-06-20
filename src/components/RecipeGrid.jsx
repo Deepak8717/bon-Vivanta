@@ -8,7 +8,7 @@ const RecipeGrid = ({ recipeData }) => {
     setRecipeDisplayCount(recipeDisplayCount + 6);
   };
   return (
-    <div className="mx-auto">
+    <div>
       <div className="w-full grid sm:grid-cols-2 xl:grid-cols-3 gap-4 ">
         {recipeData.slice(0, recipeDisplayCount).map((recipeItem, index) => {
           return <RecipeCard key={index} recipeItem={recipeItem} />;

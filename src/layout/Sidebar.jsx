@@ -2,27 +2,11 @@ import React from "react";
 import { GiMeal } from "react-icons/gi";
 import { SiCodechef } from "react-icons/si";
 import { BiDish } from "react-icons/bi";
-import { Link } from "react-router-dom";
-// import { icons } from "react-icons/lib";
+import { Link, useOutletContext } from "react-router-dom";
 
 const Sidebar = (props) => {
   const { activeMenu, activeMenuHandler } = props;
-  //sidebar
-  const sideMenu = {
-    mealType: ["breakfast", "lunch", "snack", "teatime"],
-    cuisineType: [
-      "american",
-      "asian",
-      "british",
-      "caribbean",
-      "central europe",
-      "chinese",
-      "eastern europe",
-      "french",
-    ],
-    dishType: ["side dish", "soup", "starter", "sweets"],
-  };
-
+  const { sideMenu } = useOutletContext();
   return (
     <div className="w-72 lg:ml-4 xl:ml-8 px-4  menu-scrollbar mx-2 hidden lg:block ">
       {Object.entries(sideMenu).map((menuItem, index) => {

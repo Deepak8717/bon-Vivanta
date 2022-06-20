@@ -1,25 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 
-export default function Navbar() {
-  const [hamburger, setHamburger] = useState(false);
-  const handleHamburger = () => {
-    setHamburger(!hamburger);
-  };
-  console.log(hamburger);
+export default function Navbar({ toggleHam }) {
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
-      <div className="flex align-center justify-center  col-span-1  ">
-        <button className="cursor-pointer" onClick={handleHamburger}>
+      <div className="flex align-center justify-center  col-span-1 md:hidden ">
+        <button className="lg:hidden" onClick={toggleHam}>
           <GiHamburgerMenu className="inline bg-green-200 p-1 text-3xl" />
         </button>
       </div>
 
       {/* Logo section */}
-      <div className=" flex  align-center font-Babylonica  text-6xl font-bold text-slate-800 col-span-5  ">
+      <div className=" flex  align-center font-Babylonica  text-6xl font-bold text-slate-800 col-span-5 md:col-span-6  md:ml-12">
         <div className="flex">
           <Link to="/" className="my-4">
             <div className="inline ">bon</div>

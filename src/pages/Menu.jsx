@@ -18,20 +18,19 @@ export default function Menu() {
     setActiveMenu(menu);
   };
 
-  // useEffect(() => {
-  //   const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
-  //   axios
-  //     .get(baseURL)
-  //     .then((response) => {
-  //       setRecipes(response.data.hits);
-  //     })
-  //     .catch(console.error);
-  // }, [activeMenu]);
+  useEffect(() => {
+    const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenu}`;
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setRecipes(response.data.hits);
+      })
+      .catch(console.error);
+  }, [activeMenu]);
 
   return (
     <>
-      <Navbar />
-      <div className="flex my-2 h-full">
+      <div className="flex justify-between my-2 h-full">
         <Sidebar
           activeMenuHandler={activeMenuHandler}
           activeMenu={activeMenu}
