@@ -1,20 +1,21 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useOutletContext } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 
-export default function Navbar({ toggleHam }) {
+export default function Navbar() {
+  const { toggleHam } = useOutletContext();
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
-      <div className="flex align-center justify-center  col-span-1 md:hidden ">
+      <div className="flex  justify-center  col-span-1 lg:hidden ">
         <button className="lg:hidden" onClick={toggleHam}>
           <GiHamburgerMenu className="inline bg-green-200 p-1 text-3xl" />
         </button>
       </div>
 
       {/* Logo section */}
-      <div className=" flex  align-center font-Babylonica  text-6xl font-bold text-slate-800 col-span-5 md:col-span-6  md:ml-12">
+      <div className=" flex  align-center font-Babylonica  text-6xl font-bold text-slate-800 col-span-5 lg:col-span-6">
         <div className="flex">
           <Link to="/" className="my-4">
             <div className="inline ">bon</div>
@@ -56,7 +57,7 @@ export default function Navbar({ toggleHam }) {
       <div className="w-full  col-span-2  flex items-center justify-center  col-span-6  lg:col-span-3 ">
         <input
           type="text"
-          className="border px-4 py-2 rounded-tl-lg rounded-tr-lg w-full   my-4 shadow-md focus:outline-green-500 relative"
+          className="max-w-xl border px-4 py-2 rounded-tl-lg rounded-tr-lg w-full  my-4 shadow-md focus:outline-green-500 relative"
           placeholder="search recipes . . . ."
         />
         <button className=" relative right-2 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2">
