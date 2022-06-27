@@ -6,7 +6,7 @@ export default function PopularRecipes() {
       <h3 className="text-2xl md:text-3xl capitalize text-center">
         Get Meal ideas
       </h3>
-      <div className="grid   grid-cols-2 md:grid-cols-3 xl:grid-cols-6 mx-auto lg:w-5/6  my-2 md:my-4 ">
+      <div className="grid  grid-cols-2 md:grid-cols-3 xl:grid-cols-6 justify-between my-2 md:my-8 ">
         <div className="w-[150px] h-44 md:h-52 mx-auto m-2 bg-green-600 rounded-tr-[70px] rounded-bl-[20px] relative ">
           <img
             src="https://www.acouplecooks.com/wp-content/uploads/2020/12/How-to-Make-Eggs-Sunny-Side-Up-051.jpg"

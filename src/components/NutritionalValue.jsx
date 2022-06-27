@@ -3,10 +3,11 @@ import NutritionalValueImage from "../assets/images/Nutritional-value.png";
 
 export default function NutritionalValue() {
   return (
-    <div className="md:w-[50%] my-12 lg:my-24 mx-auto  ">
+    <div className="md:w-[50%] my-12 md:my-24 mx-auto ">
       <h1 className="text-2xl md:text-3xl capitalize text-center">
         Track your Nutrition
       </h1>
+
       <div className="flex flex-col md:flex-row items-center  my-4 ">
         <div className="lg:ml-8 w-full">
           <img
