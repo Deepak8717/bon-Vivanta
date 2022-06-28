@@ -10,6 +10,7 @@ const app_Key = process.env.REACT_APP_API_KEY;
 export default function Menu() {
   let { menu } = useParams();
   const [recipes, setRecipes] = useState([]);
+  const [desktop, setDesktop] = useState(true);
   const [activeMenu, setActiveMenu] = useState(
     menu === undefined ? "lunch" : menu
   );
@@ -18,24 +19,31 @@ export default function Menu() {
     setActiveMenu(menu);
   };
 
-  // useEffect(() => {
-  //   const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&cuisineType=American&mealType=${activeMenu}&dishType=Soup`;
-  //   axios
-  //     .get(baseURL)
-  //     .then((response) => {
-  //       setRecipes(response.data.hits);
-  //     })
-  //     .catch(console.error);
-  // }, [activeMenu]);
+  useEffect(() => {
+    const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&cuisineType=American&mealType=${activeMenu}&dishType=Soup`;
+    axios
+      .get(baseURL)
+      .then((response) => {
+        setRecipes(response.data.hits);
+      })
+      .catch(console.error);
+  }, [activeMenu]);
+
+  const updateMedia = () => {
+    window.innerWidth < 1024 ? setDesktop(false) : setDesktop(true);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateMedia);
+    return () => window.removeEventListener("resize", updateMedia);
+  }, []);
 
   return (
     <>
-      <div className="flex justify-between my-2 h-full bg-white">
-        {/* <Sidebar
-          activeMenuHandler={activeMenuHandler}
-          activeMenu={activeMenu}
-        /> */}
-        <RecipeGrid recipeData={recipes} />
+      <Sidebar />
+      <div className="w-full lg:w-[85%]   absolute right-0 border-2 ">
+        {!desktop && <Navbar />}
+        main
       </div>
     </>
   );

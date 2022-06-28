@@ -1,22 +1,20 @@
 import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "./layout/Navbar";
-import Home from "./pages/Home";
 import HamburgerMenu from "./layout/HamburgerMenu";
 import "./App.css";
 
 export const recipeContext = createContext();
 
 function App() {
-  const [hamBurgerMenu, setHamBurgerMenu] = useState(true);
+  const [hamBurgerMenu, setHamBurgerMenu] = useState(false);
 
   const toggleHam = () => {
     setHamBurgerMenu(!hamBurgerMenu);
   };
   //sidebar
   const sideMenu = {
-    mealType: ["breakfast", "lunch", "snack", "teatime"],
-    cuisineType: [
+    "meal type": ["breakfast", "brunch", "lunch/dinner", "snack", "teatime"],
+    "cuisine type": [
       "american",
       "asian",
       "british",
@@ -25,8 +23,47 @@ function App() {
       "chinese",
       "eastern europe",
       "french",
+      "greek",
+      "indian",
+      "italian",
+      "japanese",
+      "korean",
+      "kosher",
+      "mediterranean",
+      "mexican",
+      "middle eastern",
+      "nordic",
+      "south american",
+      "south east asian",
+      "world",
     ],
-    dishType: ["side dish", "soup", "starter", "sweets"],
+    "dish type": [
+      "alcohol cocktail",
+      "biscuits and cookies",
+      "bread",
+      "cereals",
+      "condiments and sauces",
+      "desserts",
+      "drinks",
+      "egg",
+      "ice cream and custard",
+      "main course",
+      "pancake",
+      "pasta",
+      "pastry",
+      "pies and tarts",
+      "pizza",
+      "preps",
+      "preserve",
+      "salad",
+      "sandwiches",
+      "seafood",
+      "side dish",
+      "soup",
+      "special occasions",
+      "starter",
+      "sweets",
+    ],
   };
 
   return (

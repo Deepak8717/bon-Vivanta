@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Hero() {
   return (
-    <div className="flex flex-col md:flex-row mx-auto justify-between items-center  h-[50vh] rounded-[15px] py-5 mb-12 ">
+    <div className="flex flex-col md:flex-row mx-auto justify-between items-center  h-[50vh] rounded-[15px] py-5  ">
       <div className=" flex flex-col justify-center w-[95%] md:w-[40%] mx-auto md:mx-0 py-5 ">
         <h1 className=" uppercase text-2xl md:text-4xl lg:text-6xl md:my-2">
           a taste of home

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PopularRecipes() {
   return (
-    <div className=" my-8 ">
+    <div>
       <h3 className="text-2xl md:text-3xl capitalize text-center">
         Get Meal ideas
       </h3>

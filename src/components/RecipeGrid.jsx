@@ -9,7 +9,7 @@ const RecipeGrid = ({ recipeData }) => {
   };
   return (
     <div>
-      <div className="w-full grid sm:grid-cols-2 xl:grid-cols-3 gap-4 ">
+      <div className="w-full grid sm:grid-cols-2 xl:grid-cols-3 gap-4 border-2">
         {recipeData.slice(0, recipeDisplayCount).map((recipeItem, index) => {
           return <RecipeCard key={index} recipeItem={recipeItem} />;
         })}
