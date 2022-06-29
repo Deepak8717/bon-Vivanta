@@ -10,10 +10,19 @@ import SubMenu from "../components/SubMenu";
 import { useState } from "react";
 const Sidebar = () => {
   const { sideMenu } = useOutletContext();
-  const [subMenu, setSubMenu] = useState("");
+  const [menu, setMenu] = useState("");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
+
+  const mainMenuHandler = () => {
+    setIsMainMenuOpen(!isMainMenuOpen);
+    setMenu("");
+  };
+  const menuHandler = (menu) => {
+    setMenu(menu);
+  };
+  const subMenu = sideMenu[menu];
   return (
-    <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl">
+    <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
       <div className=" h-16">{/*Empty space*/}</div>
       <div className="flex font-Babylonica text-5xl font-bold text-slate-800 justify-center mb-8">
         <Link to="/" className=" w-[80%]">
@@ -28,11 +37,7 @@ const Sidebar = () => {
           </div>
         </Link>
         <div className="my-2">
-          <Link
-            to="/menu"
-            className="text-2xl "
-            onClick={() => setIsMainMenuOpen(!isMainMenuOpen)}
-          >
+          <Link to="/menu" className="text-2xl " onClick={mainMenuHandler}>
             <div
               className={`flex items-center hover:bg-green-600 hover:text-white p-2 bg-green-600 text-white ${
                 isMainMenuOpen ? "rounded-t-md" : "rounded-md"
@@ -51,8 +56,16 @@ const Sidebar = () => {
               </div>
             </div>
           </Link>
-          <div className={`shadow-md ${isMainMenuOpen ? "block" : "hidden"}`}>
-            {subMenu === "" ? <Menu sideMenu={sideMenu} /> : <SubMenu />}
+          <div className={`border ${isMainMenuOpen ? "block" : "hidden"}`}>
+            {menu === "" ? (
+              <Menu sideMenu={sideMenu} menuHandler={menuHandler} />
+            ) : (
+              <SubMenu
+                subMenu={subMenu}
+                menu={menu}
+                menuHandler={menuHandler}
+              />
+            )}
           </div>
         </div>
 

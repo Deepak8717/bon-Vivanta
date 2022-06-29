@@ -5,3 +5,37 @@
   box-shadow: 0px 3px 6px rgb(118 116 116 / 16%),
     5px 3px 6px rgb(110 109 109 / 23%);
 }
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 10px;
+}
+
+.submenu-custom-hover {
+  position: relative;
+  cursor: pointer;
+}
+.submenu-custom-hover:hover {
+  color: rgb(22 163 74);
+}
+.submenu-custom-hover::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  transition: all 0.2s;
+  width: 0;
+}
+.submenu-custom-hover::before {
+  left: 5%;
+}
+.submenu-custom-hover:hover:before {
+  width: 50%;
+  border-width: 1px;
+  border-color: rgb(22 163 74);
+  border-style: solid;
+}
