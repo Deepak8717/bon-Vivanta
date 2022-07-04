@@ -5,22 +5,23 @@ import {
   MdKeyboardArrowUp,
   MdKeyboardArrowDown,
 } from "react-icons/md";
-import Menu from "../components/Menu";
-import SubMenu from "../components/SubMenu";
+import MenuTypes from "../components/sidebar/MenuTypes";
+import SubMenuByMenuType from "../components/sidebar/SubMenuByMenuTypes";
 import { useState } from "react";
-const Sidebar = () => {
-  const { sideMenu } = useOutletContext();
-  const [menu, setMenu] = useState("");
+
+const Sidebar = ({ activeMenuHandler }) => {
+  const { sidebarMenu } = useOutletContext();
+  const [menuType, setMenuType] = useState("");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
 
   const mainMenuHandler = () => {
     setIsMainMenuOpen(!isMainMenuOpen);
-    setMenu("");
+    setMenuType("");
   };
-  const menuHandler = (menu) => {
-    setMenu(menu);
+  const menuTypeHandler = (menuType) => {
+    setMenuType(menuType);
   };
-  const subMenu = sideMenu[menu];
+  const SubMenuByMenuTypes = sidebarMenu[menuType];
   return (
     <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
       <div className=" h-16">{/*Empty space*/}</div>
@@ -57,19 +58,23 @@ const Sidebar = () => {
             </div>
           </Link>
           <div className={`border ${isMainMenuOpen ? "block" : "hidden"}`}>
-            {menu === "" ? (
-              <Menu sideMenu={sideMenu} menuHandler={menuHandler} />
+            {menuType === "" ? (
+              <MenuTypes
+                sidebarMenu={sidebarMenu}
+                menuTypeHandler={menuTypeHandler}
+              />
             ) : (
-              <SubMenu
-                subMenu={subMenu}
-                menu={menu}
-                menuHandler={menuHandler}
+              <SubMenuByMenuType
+                SubMenuByMenuTypes={SubMenuByMenuTypes}
+                menuType={menuType}
+                menuTypeHandler={menuTypeHandler}
+                activeMenuHandler={activeMenuHandler}
               />
             )}
           </div>
         </div>
 
-        <Link to="/" className="text-2xl my-2">
+        <Link to="/contact" className="text-2xl my-2">
           <div className="flex items-center hover:bg-green-600 hover:text-white p-2 rounded-lg">
             <AiFillPhone className="text-xl mx-2" />
             Contact

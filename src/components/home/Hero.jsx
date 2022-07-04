@@ -1,4 +1,4 @@
-import { ReactComponent as CookingSvg } from "../assets/images/Cooking.svg";
+import { ReactComponent as CookingSvg } from "../../assets/images/Cooking.svg";
 import { Link } from "react-router-dom";
 import React from "react";
 

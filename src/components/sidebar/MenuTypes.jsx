@@ -1,13 +1,13 @@
-import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
-const Menu = ({ sideMenu, menuHandler }) => {
+import { MdKeyboardArrowDown } from "react-icons/md";
+const MenuTypes = ({ sidebarMenu, menuTypeHandler }) => {
   return (
     <>
-      {Object.entries(sideMenu).map(([key], index) => {
+      {Object.entries(sidebarMenu).map(([key], index) => {
         return (
           <div
             key={index}
             className="p-1 px-3 my-4 capitalize text-lg flex justify-between items-center submenu-custom-hover"
-            onClick={() => menuHandler(key)}
+            onClick={() => menuTypeHandler(key)}
           >
             <div>{key}</div>
             <MdKeyboardArrowDown />
@@ -18,4 +18,4 @@ const Menu = ({ sideMenu, menuHandler }) => {
   );
 };
 
-export default Menu;
+export default MenuTypes;

@@ -1,6 +1,5 @@
 import { createContext, useState } from "react";
 import { Outlet } from "react-router-dom";
-import HamburgerMenu from "./layout/HamburgerMenu";
 import "./App.css";
 
 export const recipeContext = createContext();
@@ -12,7 +11,7 @@ function App() {
     setHamBurgerMenu(!hamBurgerMenu);
   };
   //sidebar
-  const sideMenu = {
+  const sidebarMenu = {
     "meal type": ["breakfast", "brunch", "lunch/dinner", "snack", "teatime"],
     "cuisine type": [
       "american",
@@ -68,11 +67,7 @@ function App() {
 
   return (
     <div>
-      <recipeContext.Provider value={{ toggleHam, sideMenu }}>
-        {hamBurgerMenu && <HamburgerMenu />}
-      </recipeContext.Provider>
-
-      <Outlet context={{ sideMenu, toggleHam }} />
+      <Outlet context={{ sidebarMenu, toggleHam }} />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import NutritionalValueImage from "../assets/images/Nutritional-value.png";
+import NutritionalValueImage from "../../assets/images/Nutritional-value.png";
 
 export default function NutritionalValue() {
   return (
@@ -12,7 +12,8 @@ export default function NutritionalValue() {
         <div className="lg:ml-8 w-full">
           <img
             src={NutritionalValueImage}
-            className="mx-auto max-w-[200px] lg:max-w-[300px] "
+            className="mx-auto max-w-[200px] lg:max-w-[300px]"
+            alt="nutritional-value"
           />
         </div>
 

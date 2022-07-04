@@ -1,7 +1,7 @@
 import React from "react";
-import Hero from "../components/Hero";
-import PopularRecipes from "../components/PopularRecipes";
-import NutritionalValue from "../components/NutritionalValue";
+import Hero from "../components/home/Hero";
+import PopularRecipes from "../components/home/PopularRecipes";
+import NutritionalValue from "../components/home/NutritionalValue";
 
 import Navbar from "../layout/Navbar";
 
