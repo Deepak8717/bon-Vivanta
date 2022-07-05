@@ -4,6 +4,7 @@ const SubMenuByMenuTypes = ({
   menuType,
   menuTypeHandler,
   activeMenuHandler,
+  activeMenu,
 }) => {
   return (
     <div>
@@ -19,7 +20,9 @@ const SubMenuByMenuTypes = ({
           return (
             <div
               key={index}
-              className="p-1 px-3 my-2 capitalize text-lg flex justify-between items-center submenu-custom-hover"
+              className={`p-1 px-3 my-2 capitalize text-lg flex justify-between items-center submenu-custom-hover ${
+                activeMenu === item ? "submenu-active" : ""
+              }`}
               onClick={() => activeMenuHandler(item)}
             >
               {item}

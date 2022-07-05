@@ -39,3 +39,19 @@
   border-color: rgb(22 163 74);
   border-style: solid;
 }
+
+.submenu-active {
+  position: relative;
+  cursor: pointer;
+  color: rgb(22 163 74);
+}
+.submenu-active::before {
+  position: absolute;
+  content: "";
+  bottom: 0;
+  transition: all 0.2s;
+  width: 50%;
+  border-width: 1px;
+  border-color: rgb(22 163 74);
+  border-style: solid;
+}

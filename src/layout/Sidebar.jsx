@@ -9,7 +9,7 @@ import MenuTypes from "../components/sidebar/MenuTypes";
 import SubMenuByMenuType from "../components/sidebar/SubMenuByMenuTypes";
 import { useState } from "react";
 
-const Sidebar = ({ activeMenuHandler }) => {
+const Sidebar = ({ activeMenuHandler, activeMenu }) => {
   const { sidebarMenu } = useOutletContext();
   const [menuType, setMenuType] = useState("");
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
@@ -69,6 +69,7 @@ const Sidebar = ({ activeMenuHandler }) => {
                 menuType={menuType}
                 menuTypeHandler={menuTypeHandler}
                 activeMenuHandler={activeMenuHandler}
+                activeMenu={activeMenu}
               />
             )}
           </div>
