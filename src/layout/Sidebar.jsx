@@ -21,7 +21,7 @@ const Sidebar = ({ activeMenuHandler, activeMenu }) => {
   const menuTypeHandler = (menuType) => {
     setMenuType(menuType);
   };
-  const SubMenuByMenuTypes = sidebarMenu[menuType];
+  const subMenuByMenuTypes = sidebarMenu[menuType];
   return (
     <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
       <div className=" h-16">{/*Empty space*/}</div>
@@ -65,7 +65,7 @@ const Sidebar = ({ activeMenuHandler, activeMenu }) => {
               />
             ) : (
               <SubMenuByMenuType
-                SubMenuByMenuTypes={SubMenuByMenuTypes}
+                subMenuByMenuTypes={subMenuByMenuTypes}
                 menuType={menuType}
                 menuTypeHandler={menuTypeHandler}
                 activeMenuHandler={activeMenuHandler}

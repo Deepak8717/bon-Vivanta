@@ -1,10 +1,11 @@
 import { IoCaretBackSharp } from "react-icons/io5";
+
 const SubMenuByMenuTypes = ({
-  SubMenuByMenuTypes,
+  activeMenu,
   menuType,
+  subMenuByMenuTypes,
   menuTypeHandler,
   activeMenuHandler,
-  activeMenu,
 }) => {
   return (
     <div>
@@ -16,7 +17,7 @@ const SubMenuByMenuTypes = ({
         <div className="bg-green-600 px-2 text-white">{menuType}</div>
       </div>
       <div className="overflow-y-auto max-h-96">
-        {SubMenuByMenuTypes.map((item, index) => {
+        {subMenuByMenuTypes.map((item, index) => {
           return (
             <div
               key={index}

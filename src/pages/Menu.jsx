@@ -19,17 +19,17 @@ export default function Menu() {
     setActiveMenu(menu);
   };
   // to fetch data
-  useEffect(() => {
-    setLoading(true);
-    const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenuWithoutChar}&random=true`;
-    axios
-      .get(baseURL)
-      .then((response) => {
-        setRecipes(response.data.hits);
-        setLoading(false);
-      })
-      .catch(console.error);
-  }, [activeMenu]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   const baseURL = `https://api.edamam.com/api/recipes/v2?type=public&q=%22%22&app_id=${app_Id}&app_key=${app_Key}&mealType=${activeMenuWithoutChar}&random=true`;
+  //   axios
+  //     .get(baseURL)
+  //     .then((response) => {
+  //       setRecipes(response.data.hits);
+  //       setLoading(false);
+  //     })
+  //     .catch(console.error);
+  // }, [activeMenu]);
 
   //this is to show the horizontal nav on smaller screen
   const updateMedia = () => {
