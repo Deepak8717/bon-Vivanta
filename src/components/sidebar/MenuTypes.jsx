@@ -1,5 +1,7 @@
 import { MdKeyboardArrowDown } from "react-icons/md";
-const MenuTypes = ({ sidebarMenu, menuTypeHandler }) => {
+import { useOutletContext } from "react-router-dom";
+const MenuTypes = ({ sidebarMenu }) => {
+  const { menuTypeHandler } = useOutletContext();
   return (
     <>
       {Object.entries(sidebarMenu).map(([key], index) => {

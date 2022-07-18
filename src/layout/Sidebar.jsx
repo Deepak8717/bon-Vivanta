@@ -9,19 +9,63 @@ import MenuTypes from "../components/sidebar/MenuTypes";
 import SubMenuByMenuType from "../components/sidebar/SubMenuByMenuTypes";
 import { useState } from "react";
 
-const Sidebar = ({ activeMenuHandler, activeMenu }) => {
-  const { sidebarMenu } = useOutletContext();
-  const [menuType, setMenuType] = useState("");
-  const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
+const Sidebar = () => {
+  const { menuType, isMainMenuOpen, mainMenuHandler } = useOutletContext();
+  const sidebarMenu = {
+    mealType: ["breakfast", "brunch", "lunch/dinner", "snack", "teatime"],
+    cuisineType: [
+      "american",
+      "asian",
+      "british",
+      "caribbean",
+      "central europe",
+      "chinese",
+      "eastern europe",
+      "french",
+      "greek",
+      "indian",
+      "italian",
+      "japanese",
+      "korean",
+      "kosher",
+      "mediterranean",
+      "mexican",
+      "middle eastern",
+      "nordic",
+      "south american",
+      "south east asian",
+      "world",
+    ],
+    dishType: [
+      "alcohol cocktail",
+      "biscuits and cookies",
+      "bread",
+      "cereals",
+      "condiments and sauces",
+      "desserts",
+      "drinks",
+      "egg",
+      "ice cream and custard",
+      "main course",
+      "pancake",
+      "pasta",
+      "pastry",
+      "pies and tarts",
+      "pizza",
+      "preps",
+      "preserve",
+      "salad",
+      "sandwiches",
+      "seafood",
+      "side dish",
+      "soup",
+      "special occasions",
+      "starter",
+      "sweets",
+    ],
+  };
 
-  const mainMenuHandler = () => {
-    setIsMainMenuOpen(!isMainMenuOpen);
-    setMenuType("");
-  };
-  const menuTypeHandler = (menuType) => {
-    setMenuType(menuType);
-  };
-  const subMenuByMenuTypes = sidebarMenu[menuType];
+  const subMenuByMenuType = sidebarMenu[menuType];
   return (
     <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
       <div className=" h-16">{/*Empty space*/}</div>
@@ -59,18 +103,9 @@ const Sidebar = ({ activeMenuHandler, activeMenu }) => {
           </Link>
           <div className={`border ${isMainMenuOpen ? "block" : "hidden"}`}>
             {menuType === "" ? (
-              <MenuTypes
-                sidebarMenu={sidebarMenu}
-                menuTypeHandler={menuTypeHandler}
-              />
+              <MenuTypes sidebarMenu={sidebarMenu} />
             ) : (
-              <SubMenuByMenuType
-                subMenuByMenuTypes={subMenuByMenuTypes}
-                menuType={menuType}
-                menuTypeHandler={menuTypeHandler}
-                activeMenuHandler={activeMenuHandler}
-                activeMenu={activeMenu}
-              />
+              <SubMenuByMenuType subMenuByMenuType={subMenuByMenuType} />
             )}
           </div>
         </div>

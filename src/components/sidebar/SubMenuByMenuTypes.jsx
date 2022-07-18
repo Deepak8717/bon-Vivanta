@@ -1,12 +1,13 @@
 import { IoCaretBackSharp } from "react-icons/io5";
+import { useOutletContext } from "react-router-dom";
 
-const SubMenuByMenuTypes = ({
-  activeMenu,
-  menuType,
-  subMenuByMenuTypes,
-  menuTypeHandler,
-  activeMenuHandler,
-}) => {
+const SubMenuByMenuTypes = ({ subMenuByMenuType }) => {
+  const {
+    menuType,
+    activeMenuByMenuTypes,
+    activeMenuByMenuTypesHandler,
+    menuTypeHandler,
+  } = useOutletContext();
   return (
     <div>
       <div className="flex items-center capitalize my-2 text-lg italic">
@@ -17,14 +18,14 @@ const SubMenuByMenuTypes = ({
         <div className="bg-green-600 px-2 text-white">{menuType}</div>
       </div>
       <div className="overflow-y-auto max-h-96">
-        {subMenuByMenuTypes.map((item, index) => {
+        {subMenuByMenuType.map((item, index) => {
           return (
             <div
               key={index}
               className={`p-1 px-3 my-2 capitalize text-lg flex justify-between items-center submenu-custom-hover ${
-                activeMenu === item ? "submenu-active" : ""
+                activeMenuByMenuTypes === item ? "submenu-active" : ""
               }`}
-              onClick={() => activeMenuHandler(item)}
+              onClick={() => activeMenuByMenuTypesHandler(item)}
             >
               {item}
             </div>

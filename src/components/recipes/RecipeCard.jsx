@@ -24,6 +24,7 @@ const RecipeCard = ({ recipeItem, loading }) => {
             {recipeItem.recipe.mealType.map((item, index) => {
               return (
                 <div
+                  key={index}
                   className={`inline mr-1 p-1 rounded ${
                     item === "breakfast"
                       ? "bg-green-600"
