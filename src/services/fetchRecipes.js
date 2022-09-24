@@ -10,11 +10,11 @@ export const fetchRecipes = (menuType, subMenuByMenuType) => {
     app_id: app_Id,
     app_key: app_Key,
     [`${menuType}`]: subMenuByMenuType,
-    random: true,
+    random: false,
   };
 
   const baseUrl = new URL("https://api.edamam.com/api/recipes/v2?type=public");
   const paramQryString = new URLSearchParams(paramObj);
   const urlWithParams = baseUrl + "&" + paramQryString;
-  return axios.get(urlWithParams).then((response) => response.data.hits);
+  return axios.get(urlWithParams).then((response) => response.data);
 };

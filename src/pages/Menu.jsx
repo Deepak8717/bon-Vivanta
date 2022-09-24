@@ -5,6 +5,7 @@ import RecipeGrid from "../components/recipes/RecipeGrid";
 import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
 import { useOutletContext } from "react-router-dom";
+import { data } from "autoprefixer";
 
 export default function Menu() {
   const { activeMenuByMenuTypes, menuType } = useOutletContext();
@@ -19,7 +20,7 @@ export default function Menu() {
     setLoading(true);
     fetchRecipes(menuType, activeMenuWithoutChar)
       .then((data) => {
-        setRecipes(data);
+        setRecipes(data.hits);
         setLoading(false);
       })
       .catch((err) => console.log(err));
@@ -40,7 +41,7 @@ export default function Menu() {
         {/* if it's not desktop screen sidebar disapear and navbar apear */}
         {!desktop && <Navbar />}
         <div className="lg:ml-60 ">
-          <CustomerInputWidget />
+          {/* <CustomerInputWidget /> */}
           <RecipeGrid recipeData={recipes} loading={loading} />
         </div>
       </div>

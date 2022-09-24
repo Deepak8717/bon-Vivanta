@@ -7,19 +7,21 @@ function App() {
   const [activeMenuByMenuTypes, setActiveMenuByMenuTypes] =
     useState("breakfast");
 
-  // sidebar root level menu
+  // parent menu on sidebar
   const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
 
-  //toggle sidebar and reset menuType
+  //toggle parent and child menu
   const mainMenuHandler = () => {
     setIsMainMenuOpen(!isMainMenuOpen);
     setMenuType("");
   };
 
+  // child menu on sidebar
   const menuTypeHandler = (menuType) => {
     setMenuType(menuType);
   };
 
+  //grandchild menu or submenu on sidebar
   const activeMenuByMenuTypesHandler = (menuByMenuTypes) => {
     setActiveMenuByMenuTypes(menuByMenuTypes);
   };
