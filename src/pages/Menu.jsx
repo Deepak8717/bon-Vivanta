@@ -4,10 +4,12 @@ import Sidebar from "../layout/Sidebar";
 import RecipeGrid from "../components/recipes/RecipeGrid";
 import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
-import { useOutletContext } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Menu() {
-  const { activeMenuByMenuTypes, menuType } = useOutletContext();
+  const { activeMenuByMenuTypes, menuType } = useSelector(
+    (state) => state.menu
+  );
   const [recipes, setRecipes] = useState([]);
   const [desktop, setDesktop] = useState(true);
 

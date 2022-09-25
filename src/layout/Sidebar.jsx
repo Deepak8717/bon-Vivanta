@@ -1,4 +1,4 @@
-import { Link, useOutletContext } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { AiTwotoneHome, AiFillPhone } from "react-icons/ai";
 import {
   MdRestaurantMenu,

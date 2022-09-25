@@ -12,8 +12,18 @@ export const menuSlice = createSlice({
     mainMenuHandler: (state) => {
       state.isMainMenuOpen = !state.isMainMenuOpen;
     },
+    menuTypeHandler: (state, actions) => {
+      state.menuType = actions.payload;
+    },
+    activeMenuByMenuTypesHandler: (state, actions) => {
+      state.activeMenuByMenuTypes = actions.payload;
+    },
   },
 });
 
-export const { mainMenuHandler } = menuSlice.actions;
+export const {
+  mainMenuHandler,
+  menuTypeHandler,
+  activeMenuByMenuTypesHandler,
+} = menuSlice.actions;
 export default menuSlice.reducer;

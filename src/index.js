@@ -14,7 +14,7 @@ root.render(
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
-        <Route path="" element={<App />}>
+        <Route exact path="" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="menu" element={<Menu />} />
           <Route path="/:menu/:submenu" element={<Menu />} />

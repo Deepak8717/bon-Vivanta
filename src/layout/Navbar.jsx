@@ -1,15 +1,14 @@
 import React from "react";
-import { Link, NavLink, useOutletContext } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
 
 export default function Navbar() {
-  const { toggleHam } = useOutletContext();
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
       <div className="flex  justify-center  col-span-1 lg:hidden ">
-        <button className="lg:hidden" onClick={toggleHam}>
+        <button className="lg:hidden">
           <GiHamburgerMenu className="inline bg-green-200 p-1 text-3xl" />
         </button>
       </div>
