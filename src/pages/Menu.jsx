@@ -5,7 +5,6 @@ import RecipeGrid from "../components/recipes/RecipeGrid";
 import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
 import { useOutletContext } from "react-router-dom";
-import { data } from "autoprefixer";
 
 export default function Menu() {
   const { activeMenuByMenuTypes, menuType } = useOutletContext();

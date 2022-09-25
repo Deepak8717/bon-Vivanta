@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import "./App.css";
+import Counter from "./redux/Counter";
 
 function App() {
   const [menuType, setMenuType] = useState("mealType");
@@ -8,13 +9,13 @@ function App() {
     useState("breakfast");
 
   // parent menu on sidebar
-  const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
+  // const [isMainMenuOpen, setIsMainMenuOpen] = useState(true);
 
   //toggle parent and child menu
-  const mainMenuHandler = () => {
-    setIsMainMenuOpen(!isMainMenuOpen);
-    setMenuType("");
-  };
+  // const mainMenuHandler = () => {
+  //   setIsMainMenuOpen(!isMainMenuOpen);
+  //   setMenuType("");
+  // };
 
   // child menu on sidebar
   const menuTypeHandler = (menuType) => {
@@ -32,9 +33,7 @@ function App() {
         context={{
           menuType,
           activeMenuByMenuTypes,
-          isMainMenuOpen,
           activeMenuByMenuTypesHandler,
-          mainMenuHandler,
           menuTypeHandler,
         }}
       />

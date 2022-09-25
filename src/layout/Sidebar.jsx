@@ -7,64 +7,13 @@ import {
 } from "react-icons/md";
 import MenuTypes from "../components/sidebar/MenuTypes";
 import SubMenuByMenuType from "../components/sidebar/SubMenuByMenuTypes";
-import { useState } from "react";
+import { sidebarMenu } from "../common/sidebarMenuData";
+import { useDispatch, useSelector } from "react-redux";
+import { mainMenuHandler } from "../redux/menuSlice";
 
 const Sidebar = () => {
-  const { menuType, isMainMenuOpen, mainMenuHandler } = useOutletContext();
-  const sidebarMenu = {
-    mealType: ["breakfast", "brunch", "lunch/dinner", "snack", "teatime"],
-    cuisineType: [
-      "american",
-      "asian",
-      "british",
-      "caribbean",
-      "central europe",
-      "chinese",
-      "eastern europe",
-      "french",
-      "greek",
-      "indian",
-      "italian",
-      "japanese",
-      "korean",
-      "kosher",
-      "mediterranean",
-      "mexican",
-      "middle eastern",
-      "nordic",
-      "south american",
-      "south east asian",
-      "world",
-    ],
-    dishType: [
-      "alcohol cocktail",
-      "biscuits and cookies",
-      "bread",
-      "cereals",
-      "condiments and sauces",
-      "desserts",
-      "drinks",
-      "egg",
-      "ice cream and custard",
-      "main course",
-      "pancake",
-      "pasta",
-      "pastry",
-      "pies and tarts",
-      "pizza",
-      "preps",
-      "preserve",
-      "salad",
-      "sandwiches",
-      "seafood",
-      "side dish",
-      "soup",
-      "special occasions",
-      "starter",
-      "sweets",
-    ],
-  };
-
+  const { menuType, isMainMenuOpen } = useSelector((state) => state.menu);
+  const dispatch = useDispatch();
   const subMenuByMenuType = sidebarMenu[menuType];
   return (
     <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
@@ -82,7 +31,11 @@ const Sidebar = () => {
           </div>
         </Link>
         <div className="my-2">
-          <Link to="/menu" className="text-2xl " onClick={mainMenuHandler}>
+          <Link
+            to="/menu"
+            className="text-2xl "
+            onClick={() => dispatch(mainMenuHandler())}
+          >
             <div
               className={`flex items-center hover:bg-green-600 hover:text-white p-2 bg-green-600 text-white ${
                 isMainMenuOpen ? "rounded-t-md" : "rounded-md"

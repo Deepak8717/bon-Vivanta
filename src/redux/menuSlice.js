@@ -1,31 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
+const initialState = {
+  menuType: "mealType",
+  activeMenuByMenuTypes: "breakfast",
+  isMainMenuOpen: true,
+};
 
 export const menuSlice = createSlice({
   name: "menu",
-  initialState: [
-    {
-      menuType: "mealType",
-      activeMenuByMenuTypes: "breakfast",
-      isMainMenuOpen: true,
-    },
-  ],
+  initialState,
   reducers: {
-    mainMenuHandler: (state, actions) => {
-      console.log("toggle main menu");
-    },
-    menuTypeHandler: (state, actions) => {
-      console.log("set child menu");
-    },
-    activeMenuByMenuTypesHandler: (state, actions) => {
-      console.log("set grandchildmenu");
+    mainMenuHandler: (state) => {
+      state.isMainMenuOpen = !state.isMainMenuOpen;
     },
   },
 });
 
-export const {
-  mainMenuHandler,
-  menuTypeHandler,
-  activeMenuByMenuTypesHandler,
-} = menuSlice.actions;
-
+export const { mainMenuHandler } = menuSlice.actions;
 export default menuSlice.reducer;
