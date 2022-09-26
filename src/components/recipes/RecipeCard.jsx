@@ -1,9 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
+import { useDispatch, useSelector } from "react-redux";
+import { activeRecipeHandler } from "../../redux/menuSlice";
 const RecipeCard = ({ recipeItem, loading }) => {
+  const { menuType, activeMenuByMenuTypes } = useSelector(
+    (state) => state.menu
+  );
+  const dispatch = useDispatch();
   return (
-    <Link to={"/"}>
+    <Link
+      to={`/menu/${menuType}/${activeMenuByMenuTypes.replace(
+        /[^a-zA-Z0-9]/g,
+        "_"
+      )}/${recipeItem.recipe.label.replace(/[^a-zA-Z0-9]/g, "_")}`}
+      onClick={() => dispatch(activeRecipeHandler(recipeItem.recipe))}
+    >
       <div className="mx-auto  recipe-card-shaodw rounded-2xl cursor-pointer border shadow-lg">
         {loading ? (
           <div className="w-72 h-56">

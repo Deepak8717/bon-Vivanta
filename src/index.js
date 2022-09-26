@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import RecipeDetails from "./pages/RecipeDetails";
 import Error from "./pages/Error";
 import { store } from "./redux/store";
 import { Provider } from "react-redux";
@@ -17,7 +18,11 @@ root.render(
         <Route exact path="" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="menu" element={<Menu />} />
-          <Route path="/:menu/:submenu" element={<Menu />} />
+          <Route path="menu/:menu/:submenu" element={<Menu />} />
+          <Route
+            path="menu/:menu/:submenu/:recipe"
+            element={<RecipeDetails />}
+          />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

@@ -23,7 +23,7 @@ const SubMenuByMenuTypes = ({ subMenuByMenuType }) => {
         {subMenuByMenuType.map((item, index) => {
           return (
             <Link
-              to={`/${menuType}/${item.replace(/[^a-zA-Z0-9]/g, "_")}`}
+              to={`/menu/${menuType}/${item.replace(/[^a-zA-Z0-9]/g, "_")}`}
               key={index}
             >
               <div

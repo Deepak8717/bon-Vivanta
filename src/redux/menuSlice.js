@@ -3,6 +3,7 @@ const initialState = {
   menuType: "mealType",
   activeMenuByMenuTypes: "breakfast",
   isMainMenuOpen: true,
+  activeRecipe: null,
 };
 
 export const menuSlice = createSlice({
@@ -18,6 +19,9 @@ export const menuSlice = createSlice({
     activeMenuByMenuTypesHandler: (state, actions) => {
       state.activeMenuByMenuTypes = actions.payload;
     },
+    activeRecipeHandler: (state, actions) => {
+      state.activeRecipe = actions.payload;
+    },
   },
 });
 
@@ -25,5 +29,6 @@ export const {
   mainMenuHandler,
   menuTypeHandler,
   activeMenuByMenuTypesHandler,
+  activeRecipeHandler,
 } = menuSlice.actions;
 export default menuSlice.reducer;
