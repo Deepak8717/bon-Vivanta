@@ -10,7 +10,7 @@ export const fetchRecipes = (menuType, subMenuByMenuType) => {
     app_id: app_Id,
     app_key: app_Key,
     [`${menuType}`]: subMenuByMenuType,
-    random: false,
+    random: true,
   };
 
   const baseUrl = new URL("https://api.edamam.com/api/recipes/v2?type=public");
