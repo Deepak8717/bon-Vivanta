@@ -95,8 +95,9 @@ const RecipeDetails = () => {
               />
             </div>
           </div>
-          <div className="w-[95%] md:w-[80%]   mx-auto">
-            <div className="w-[90%] mx-auto my-2 border-t-2 text-left">
+
+          <div className="w-[95%] md:w-[80%]  mx-auto flex flex-col md:flex-row border-t-2">
+            <div className="w-full md:w-[50%] my-2 mx-auto md:mx-0 text-left">
               <div className="flex justify-between w-[90%] my-2">
                 <h1 className=" capitalize text-2xl">Ingredients</h1>
                 <div className="capitalize font-bold">
@@ -112,6 +113,74 @@ const RecipeDetails = () => {
                 <a href={activeRecipe.url} target="_blank">
                   Get Instructions
                 </a>
+              </div>
+            </div>
+            <div className="w-full md:w-[50%] my-4 mx-auto md:mx-0 text-left  ">
+              <div className="flex">
+                <div className=" h-fit p-2 border-l-4 mx-2  shadow-md shadow-slate-600">
+                  <div className="text-sm">Calories</div>
+                  <div className="text-2xl md:text-3xl text-slate-600">
+                    {activeRecipe.totalNutrients.ENERC_KCAL.quantity.toFixed(2)}
+                    <span className="text-lg">Kal</span>
+                  </div>
+                </div>
+                <div className="h-fit p-2 border-l-4 mx-2 shadow-md shadow-slate-600 ">
+                  <div className="text-sm">Carbs</div>
+                  <div className="text-2xl md:text-3xl text-slate-600">
+                    {activeRecipe.totalNutrients.CHOCDF.quantity.toFixed(2)}
+                    <span className="text-lg">g</span>
+                  </div>
+                </div>
+                <div className="h-fit p-2 border-l-4 mx-2 shadow-md shadow-slate-600 ">
+                  <div className="text-sm">Protein</div>
+                  <div className="text-2xl md:text-3xl text-slate-600">
+                    {activeRecipe.totalNutrients.PROCNT.quantity.toFixed(2)}
+                    <span className="text-lg">g</span>
+                  </div>
+                </div>
+                <div className="h-fit p-2 border-l-4 mx-2 shadow-md shadow-slate-600 ">
+                  <div className="text-sm">Fat</div>
+                  <div className="text-2xl md:text-3xl text-slate-600">
+                    {activeRecipe.totalNutrients.FAT.quantity.toFixed(2)}
+                    <span className="text-lg">g</span>
+                  </div>
+                </div>
+              </div>
+              <div className="flex my-2">
+                {activeRecipe.dietLabels.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="m-2 my-1 p-1 px-2 rounded-xl border-4 border-green-600"
+                    >
+                      {item}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="flex my-2">
+                {activeRecipe.cautions.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="m-2 my-1 p-1 px-2 rounded-xl bg-rose-600 text-white font-bold"
+                    >
+                      {item}
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="flex flex-wrap my-2">
+                {activeRecipe.healthLabels.map((item, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="m-2 my-1 p-1 px-2 rounded-xl border-2"
+                    >
+                      {item}
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
