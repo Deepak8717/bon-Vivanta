@@ -18,3 +18,11 @@ export const fetchRecipes = (menuType, subMenuByMenuType) => {
   const urlWithParams = baseUrl + "&" + paramQryString;
   return axios.get(urlWithParams).then((response) => response.data);
 };
+
+export const fetchRecipe = (recipeId) => {
+  return axios
+    .get(
+      `https://api.edamam.com/api/recipes/v2/${recipeId}?type=public&app_id=${app_Id}&app_key=${app_Key}`
+    )
+    .then((response) => response.data);
+};

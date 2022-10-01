@@ -10,6 +10,7 @@ export default function Menu() {
   const { activeMenuByMenuTypes, menuType } = useSelector(
     (state) => state.menu
   );
+  console.log(activeMenuByMenuTypes, menuType);
   const [recipes, setRecipes] = useState([]);
   const [desktop, setDesktop] = useState(true);
 
@@ -24,7 +25,10 @@ export default function Menu() {
         setRecipes(data.hits);
         setLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        console.log(err);
+      });
   }, [activeMenuByMenuTypes]);
   // this is to show the horizontal nav on smaller screen
   const updateMedia = () => {

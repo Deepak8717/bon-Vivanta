@@ -8,12 +8,15 @@ const RecipeCard = ({ recipeItem, loading }) => {
     (state) => state.menu
   );
   const dispatch = useDispatch();
+  const recipeId = recipeItem.recipe.uri.substring(
+    recipeItem.recipe.uri.indexOf("#") + 1
+  );
   return (
     <Link
       to={`/menu/${menuType}/${activeMenuByMenuTypes.replace(
         /[^a-zA-Z0-9]/g,
         "_"
-      )}/${recipeItem.recipe.label.replace(/[^a-zA-Z0-9]/g, "_")}`}
+      )}/${recipeItem.recipe.label.replace(/[^a-zA-Z0-9]/g, "_")}/${recipeId}`}
       onClick={() => dispatch(activeRecipeHandler(recipeItem.recipe))}
     >
       <div className="mx-auto  recipe-card-shaodw rounded-2xl cursor-pointer border shadow-lg">

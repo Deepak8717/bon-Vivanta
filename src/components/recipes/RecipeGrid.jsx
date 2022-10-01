@@ -1,11 +1,23 @@
+import { useSelector } from "react-redux";
 import RecipeCard from "./RecipeCard";
 
 const RecipeGrid = ({ recipeData, loading }) => {
+  const { activeMenuByMenuTypes } = useSelector((state) => state.menu);
   return (
     <div>
       <div className="w-full md:w-[80%] my-12  mx-auto grid sm:grid-cols-2 xl:grid-cols-4 gap-6 ">
-        {recipeData.length === 0 ? (
-          <h1 className="text-5xl">Coming Soon....</h1>
+        {loading ? (
+          <div className="w-full h-[50vh] flex flex-col justify-center sm:col-span-2 xl:col-span-4 text-center text-5xl font-bold text-slate-600">
+            Loading...
+          </div>
+        ) : recipeData.length === 0 ? (
+          <div className="w-full h-[50vh] flex flex-col justify-center sm:col-span-2 xl:col-span-4 text-center text-5xl font-bold text-slate-600 capitalize">
+            {activeMenuByMenuTypes}
+            <div className="text-2xl">
+              will be available soon.
+              <p className="text-xl">Please choose a different menu</p>
+            </div>
+          </div>
         ) : (
           recipeData.map((recipeItem, index) => {
             return (

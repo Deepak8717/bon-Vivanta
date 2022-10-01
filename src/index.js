@@ -20,7 +20,7 @@ root.render(
           <Route path="menu" element={<Menu />} />
           <Route path="menu/:menu/:submenu" element={<Menu />} />
           <Route
-            path="menu/:menu/:submenu/:recipe"
+            path="menu/:menu/:submenu/:recipe/:recipeId"
             element={<RecipeDetails />}
           />
           <Route path="*" element={<Error />} />
