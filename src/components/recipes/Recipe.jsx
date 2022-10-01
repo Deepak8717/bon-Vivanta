@@ -33,7 +33,7 @@ export const Recipe = (activeRecipe) => {
           <div className="mx-auto md:mx-0">
             <img
               src={recipe.image}
-              className="rounded-lg w-[500px] h-[500px]"
+              className="rounded-lg w-[300px] h-[300px] md:w-[500px] md:h-[500px]"
             />
           </div>
           <div className=" w-full md:w-[50%] mx-auto md:mx-8 my-4 md:my-0 text-center md:text-left">

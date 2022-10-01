@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   menuType: "mealType",
   activeMenuByMenuTypes: "breakfast",
+  searchQry: "",
   isMainMenuOpen: true,
   activeRecipe: null,
 };
@@ -22,6 +23,9 @@ export const menuSlice = createSlice({
     activeRecipeHandler: (state, actions) => {
       state.activeRecipe = actions.payload;
     },
+    searchQryHandler: (state, actions) => {
+      state.searchQry = actions.payload;
+    },
   },
 });
 
@@ -30,5 +34,6 @@ export const {
   menuTypeHandler,
   activeMenuByMenuTypesHandler,
   activeRecipeHandler,
+  searchQryHandler,
 } = menuSlice.actions;
 export default menuSlice.reducer;

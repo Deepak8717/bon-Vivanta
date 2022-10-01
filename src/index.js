@@ -18,9 +18,10 @@ root.render(
         <Route exact path="" element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="menu" element={<Menu />} />
+          <Route path="menu/:q=chicken" element={<Menu />} />
           <Route path="menu/:menu/:submenu" element={<Menu />} />
           <Route
-            path="menu/:menu/:submenu/:recipe/:recipeId"
+            path="menu/:submenu/:recipe/:recipeId"
             element={<RecipeDetails />}
           />
           <Route path="*" element={<Error />} />

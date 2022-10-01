@@ -6,7 +6,7 @@ import { Chart as ChartJs, ArcElement, Tooltip, Legend } from "chart.js";
 import { fetchRecipe } from "../services/fetchRecipes";
 import { useParams } from "react-router-dom";
 import { FadeLoader } from "react-spinners";
-import recipe, { Recipe } from "../components/recipes/Recipe";
+import { Recipe } from "../components/recipes/Recipe";
 ChartJs.register(ArcElement, Tooltip, Legend);
 
 const RecipeDetails = () => {
@@ -16,7 +16,6 @@ const RecipeDetails = () => {
 
   useEffect(() => {
     setLoading(true);
-
     fetchRecipe(recipeId)
       .then((recipeData) => {
         setActiveRecipe(recipeData.recipe);
@@ -44,9 +43,9 @@ const RecipeDetails = () => {
         {!desktop && <Navbar />}
         {
           loading ? (
-            <>Loading...</>
+            <></>
           ) : Object.keys(activeRecipe).length === 0 ? (
-            <>No Recipe</>
+            <></>
           ) : (
             <Recipe recipe={activeRecipe} />
           )

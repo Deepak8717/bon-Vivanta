@@ -13,7 +13,7 @@ const RecipeCard = ({ recipeItem, loading }) => {
   );
   return (
     <Link
-      to={`/menu/${menuType}/${activeMenuByMenuTypes.replace(
+      to={`/menu/${activeMenuByMenuTypes.replace(
         /[^a-zA-Z0-9]/g,
         "_"
       )}/${recipeItem.recipe.label.replace(/[^a-zA-Z0-9]/g, "_")}/${recipeId}`}

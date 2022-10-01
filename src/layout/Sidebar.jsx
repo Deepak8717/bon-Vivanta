@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiTwotoneHome, AiFillPhone } from "react-icons/ai";
 import {
   MdRestaurantMenu,
@@ -9,20 +9,42 @@ import MenuTypes from "../components/sidebar/MenuTypes";
 import SubMenuByMenuType from "../components/sidebar/SubMenuByMenuTypes";
 import { sidebarMenu } from "../common/sidebarMenuData";
 import { useDispatch, useSelector } from "react-redux";
-import { mainMenuHandler } from "../redux/menuSlice";
+import { mainMenuHandler, searchQryHandler } from "../redux/menuSlice";
+import { FiSearch } from "react-icons/fi";
+import { useState } from "react";
 
 const Sidebar = () => {
   const { menuType, isMainMenuOpen } = useSelector((state) => state.menu);
+  const [searchInput, setSearchInput] = useState("");
   const dispatch = useDispatch();
+  const SearchOnchange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
   const subMenuByMenuType = sidebarMenu[menuType];
   return (
-    <div className="w-60 fixed inset-y-0  hidden lg:block shadow-2xl ">
-      <div className=" h-16">{/*Empty space*/}</div>
-      <div className="flex font-Babylonica text-5xl font-bold text-slate-800 justify-center mb-8">
+    <div className="w-[320px] fixed inset-y-0  hidden lg:block shadow-2xl ">
+      <div className="flex font-Babylonica text-5xl font-bold text-slate-800 justify-center mt-16 mb-8">
         <Link to="/" className=" w-[80%]">
           <div className="inline ">bon</div>
           <div className="inline text-green-600  my-4">Vivanta</div>
         </Link>
+      </div>
+      <div className="relative w-[90%] mx-auto  col-span-2  flex items-center justify-center  col-span-6  lg:col-span-3">
+        <input
+          type="text"
+          className="max-w-xl border-2 pl-4 py-2 rounded-tl-lg rounded-tr-lg w-full  my-2 shadow-md focus:outline-green-500 "
+          placeholder="search recipes . . . ."
+          name="searchInput"
+          value={searchInput}
+          onChange={(e) => SearchOnchange(e)}
+        />
+        <button
+          className=" absolute right-0 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2"
+          onClick={() => dispatch(searchQryHandler(searchInput))}
+        >
+          <FiSearch className="inline  mx-1 text-2xl" />
+        </button>
       </div>
       <div className="w-[90%] mx-auto h-60 ">
         <Link to="/" className="text-2xl my-2">
