@@ -1,9 +1,20 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
+import { searchQryHandler } from "../redux/menuSlice";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
+  const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const SearchOnchange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const handleCick = (searchInput) => {
+    navigate(`/menu/${searchInput}`);
+  };
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
@@ -58,8 +69,16 @@ export default function Navbar() {
           type="text"
           className="max-w-xl border px-4 py-2 rounded-tl-lg rounded-tr-lg w-full  my-4 shadow-md focus:outline-green-500 relative"
           placeholder="search recipes . . . ."
+          value={searchInput}
+          onChange={(e) => SearchOnchange(e)}
         />
-        <button className=" relative right-2 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2">
+        <button
+          className=" relative right-2 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2"
+          onClick={() => {
+            dispatch(searchQryHandler(searchInput));
+            handleCick(searchInput);
+          }}
+        >
           <FiSearch className="inline  mx-1 text-2xl" />
         </button>
       </div>

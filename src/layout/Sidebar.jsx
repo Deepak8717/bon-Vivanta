@@ -16,12 +16,16 @@ import { useState } from "react";
 const Sidebar = () => {
   const { menuType, isMainMenuOpen } = useSelector((state) => state.menu);
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const SearchOnchange = (e) => {
     setSearchInput(e.target.value);
   };
-
+  const handleCick = (searchInput) => {
+    navigate(`/menu/${searchInput}`);
+  };
   const subMenuByMenuType = sidebarMenu[menuType];
+
   return (
     <div className="w-[320px] fixed inset-y-0  hidden lg:block shadow-2xl ">
       <div className="flex font-Babylonica text-5xl font-bold text-slate-800 justify-center mt-16 mb-8">
@@ -41,7 +45,10 @@ const Sidebar = () => {
         />
         <button
           className=" absolute right-0 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2"
-          onClick={() => dispatch(searchQryHandler(searchInput))}
+          onClick={() => {
+            dispatch(searchQryHandler(searchInput));
+            handleCick(searchInput);
+          }}
         >
           <FiSearch className="inline  mx-1 text-2xl" />
         </button>
