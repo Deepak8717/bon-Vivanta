@@ -24,6 +24,12 @@ const Sidebar = () => {
   const handleCick = (searchInput) => {
     navigate(`/menu/${searchInput}`);
   };
+  const handleKeydown = (e) => {
+    if (e.code === "Enter") {
+      dispatch(searchQryHandler(searchInput));
+      handleCick(searchInput);
+    }
+  };
   const subMenuByMenuType = sidebarMenu[menuType];
 
   return (
@@ -42,6 +48,7 @@ const Sidebar = () => {
           name="searchInput"
           value={searchInput}
           onChange={(e) => SearchOnchange(e)}
+          onKeyDown={(e) => handleKeydown(e)}
         />
         <button
           className=" absolute right-0 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2"

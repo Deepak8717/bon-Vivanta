@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
@@ -14,6 +14,12 @@ export default function Navbar() {
   };
   const handleCick = (searchInput) => {
     navigate(`/menu/${searchInput}`);
+  };
+  const handleKeydown = (e) => {
+    if (e.code === "Enter") {
+      dispatch(searchQryHandler(searchInput));
+      handleCick(searchInput);
+    }
   };
   return (
     <div className="grid  grid-cols-6  md:grid-cols-12">
@@ -71,6 +77,7 @@ export default function Navbar() {
           placeholder="search recipes . . . ."
           value={searchInput}
           onChange={(e) => SearchOnchange(e)}
+          onKeyDown={(e) => handleKeydown(e)}
         />
         <button
           className=" relative right-2 rounded-tr-lg rounded-br-lg text-white bg-green-600 p-2"
