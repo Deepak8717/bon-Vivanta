@@ -28,11 +28,11 @@ const RecipeCard = ({ recipeItem, loading }) => {
           <img
             src={recipeItem.recipe.image}
             alt={recipeItem.recipe.label}
-            className="w-72 h-56 rounded-t-2xl "
+            className="w-72 h-56 rounded-t-2xl mx-auto"
           />
         )}
 
-        <div className=" p-2 w-72">
+        <div className=" p-2 w-72 mx-auto">
           <div className="flex flex-wrap mb-2">
             <h1 className="w-full h-8 text-xl overflow-hidden">
               {recipeItem.recipe.label}

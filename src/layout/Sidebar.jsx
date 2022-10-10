@@ -14,7 +14,9 @@ import { FiSearch } from "react-icons/fi";
 import { useState } from "react";
 
 const Sidebar = () => {
-  const { menuType, isMainMenuOpen } = useSelector((state) => state.menu);
+  const { menuType, isMainMenuOpen, hamMenu } = useSelector(
+    (state) => state.menu
+  );
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -33,7 +35,11 @@ const Sidebar = () => {
   const subMenuByMenuType = sidebarMenu[menuType];
 
   return (
-    <div className="w-[320px] fixed inset-y-0  hidden lg:block shadow-2xl ">
+    <div
+      className={`w-[320px] fixed inset-y-0 ${
+        hamMenu ? "block" : "hidden"
+      } lg:block shadow-2xl bg-white`}
+    >
       <div className="flex font-Babylonica text-5xl font-bold text-slate-800 justify-center mt-16 mb-8">
         <Link to="/" className=" w-[80%]">
           <div className="inline ">bon</div>
@@ -43,7 +49,7 @@ const Sidebar = () => {
       <div className="relative w-[90%] mx-auto  col-span-2  flex items-center justify-center  col-span-6  lg:col-span-3">
         <input
           type="text"
-          className="max-w-xl border-2 pl-4 py-2 rounded-tl-lg rounded-tr-lg w-full  my-2 shadow-md focus:outline-green-500 "
+          className="max-w-xlw-[90%] mx-auto border-2 pl-4 py-2 rounded-tl-lg rounded-tr-lg w-full my-2 shadow-md focus:outline-green-500 "
           placeholder="search recipes . . . ."
           name="searchInput"
           value={searchInput}

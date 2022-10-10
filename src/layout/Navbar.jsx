@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSearch } from "react-icons/fi";
-import { searchQryHandler } from "../redux/menuSlice";
-import { useDispatch } from "react-redux";
-
+import { searchQryHandler, toggleHamMenu } from "../redux/menuSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { HamMenuModal } from "../components/HamMenuModal";
 export default function Navbar() {
   const [searchInput, setSearchInput] = useState("");
+  const { hamMenu } = useSelector((state) => state.menu);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const SearchOnchange = (e) => {
@@ -25,11 +26,12 @@ export default function Navbar() {
     <div className="grid  grid-cols-6  md:grid-cols-12">
       {/* Hamburger menu button */}
       <div className="flex  justify-center  col-span-1 lg:hidden ">
-        <button className="lg:hidden">
+        <button className="lg:hidden" onClick={() => dispatch(toggleHamMenu())}>
           <GiHamburgerMenu className="inline bg-green-200 p-1 text-3xl" />
         </button>
       </div>
-
+      {}
+      {hamMenu && <HamMenuModal />}
       {/* Logo section */}
       <div className=" flex  align-center font-Babylonica  text-6xl font-bold text-slate-800 col-span-5 lg:col-span-6">
         <div className="flex">

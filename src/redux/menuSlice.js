@@ -5,6 +5,7 @@ const initialState = {
   searchQry: "",
   isMainMenuOpen: true,
   activeRecipe: null,
+  hamMenu: false,
 };
 
 export const menuSlice = createSlice({
@@ -26,6 +27,9 @@ export const menuSlice = createSlice({
     searchQryHandler: (state, actions) => {
       state.searchQry = actions.payload;
     },
+    toggleHamMenu: (state) => {
+      state.hamMenu = !state.hamMenu;
+    },
   },
 });
 
@@ -35,5 +39,6 @@ export const {
   activeMenuByMenuTypesHandler,
   activeRecipeHandler,
   searchQryHandler,
+  toggleHamMenu,
 } = menuSlice.actions;
 export default menuSlice.reducer;
