@@ -5,16 +5,17 @@ import RecipeGrid from "../components/recipes/RecipeGrid";
 import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
 import { useSelector } from "react-redux";
-
+import { HamMenuModal } from "../components/HamMenuModal";
 export default function Menu() {
-  const { activeMenuByMenuTypes, menuType, searchQry } = useSelector(
+  const { activeMenuByMenuTypes, menuType, searchQry, hamMenu } = useSelector(
     (state) => state.menu
   );
-
+  const { innerWidth } = window;
   const [recipes, setRecipes] = useState([]);
-  const [desktop, setDesktop] = useState(true);
+  const [desktop, setDesktop] = useState(innerWidth > 1024 ? true : false);
   const [loading, setLoading] = useState(false);
 
+  console.log(desktop);
   const activeMenuWithoutChar = activeMenuByMenuTypes.split("/")[0];
   // to fetch data
   useEffect(() => {
@@ -40,7 +41,8 @@ export default function Menu() {
 
   return (
     <>
-      <Sidebar />
+      {hamMenu ? <HamMenuModal /> : <Sidebar />}
+
       <div className="w-full overflow-none">
         {/* if it's not desktop screen sidebar disapear and navbar apear */}
         {!desktop && <Navbar />}

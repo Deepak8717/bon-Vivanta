@@ -19,7 +19,7 @@ const RecipeCard = ({ recipeItem, loading }) => {
       )}/${recipeItem.recipe.label.replace(/[^a-zA-Z0-9]/g, "_")}/${recipeId}`}
       onClick={() => dispatch(activeRecipeHandler(recipeItem.recipe))}
     >
-      <div className="mx-auto  recipe-card-shaodw rounded-2xl cursor-pointer border shadow-lg">
+      <div className="w-[90%] md:w-full mx-auto  recipe-card-shaodw rounded-2xl cursor-pointer border shadow-lg">
         {loading ? (
           <div className="w-72 h-56">
             <FadeLoader className="mx-auto my-12" />
@@ -28,7 +28,7 @@ const RecipeCard = ({ recipeItem, loading }) => {
           <img
             src={recipeItem.recipe.image}
             alt={recipeItem.recipe.label}
-            className="w-72 h-56 rounded-t-2xl mx-auto"
+            className="w-72 h-56 py-2 rounded-t-2xl mx-auto"
           />
         )}
 
