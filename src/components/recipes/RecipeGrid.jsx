@@ -10,7 +10,7 @@ const RecipeGrid = ({ recipeData, loading }) => {
           <div className="w-full h-[50vh] flex flex-col justify-center sm:col-span-2 xl:col-span-4 text-center text-5xl font-bold text-slate-600">
             Loading...
           </div>
-        ) : recipeData.length === 0 ? (
+        ) : recipeData.hits.length === 0 ? (
           <div className="w-full h-[50vh] flex flex-col justify-center sm:col-span-2 xl:col-span-4 text-center text-5xl font-bold text-slate-600 capitalize">
             {activeMenuByMenuTypes}
             <div className="text-2xl">
@@ -19,7 +19,7 @@ const RecipeGrid = ({ recipeData, loading }) => {
             </div>
           </div>
         ) : (
-          recipeData.map((recipeItem, index) => {
+          recipeData.hits.map((recipeItem, index) => {
             return (
               <RecipeCard
                 key={index}

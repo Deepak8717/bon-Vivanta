@@ -12,14 +12,14 @@ export const fetchRecipes = (searchQry, menuType, subMenuByMenuType) => {
       app_id: app_Id,
       app_key: app_Key,
       [`${menuType}`]: subMenuByMenuType,
-      random: true,
+      random: false,
     };
   } else {
     paramObj = {
       q: searchQry,
       app_id: app_Id,
       app_key: app_Key,
-      random: true,
+      random: false,
     };
   }
 

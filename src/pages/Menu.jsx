@@ -6,6 +6,7 @@ import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
 import { useSelector } from "react-redux";
 import { HamMenuModal } from "../components/HamMenuModal";
+import { data } from "../sampleData";
 export default function Menu() {
   const { activeMenuByMenuTypes, menuType, searchQry, hamMenu } = useSelector(
     (state) => state.menu
@@ -15,14 +16,14 @@ export default function Menu() {
   const [desktop, setDesktop] = useState(innerWidth > 1024 ? true : false);
   const [loading, setLoading] = useState(false);
 
-  console.log(desktop);
   const activeMenuWithoutChar = activeMenuByMenuTypes.split("/")[0];
+
   // to fetch data
   useEffect(() => {
     setLoading(true);
     fetchRecipes(searchQry, menuType, activeMenuWithoutChar)
       .then((data) => {
-        setRecipes(data.hits);
+        setRecipes(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -31,6 +32,7 @@ export default function Menu() {
       });
   }, [searchQry, activeMenuByMenuTypes]);
   // this is to show the horizontal nav on smaller screen
+  // console.log(recipes);
   const updateMedia = () => {
     window.innerWidth < 1024 ? setDesktop(false) : setDesktop(true);
   };
@@ -49,6 +51,7 @@ export default function Menu() {
         <div className="lg:ml-60 ">
           {/* <CustomerInputWidget /> */}
           <RecipeGrid recipeData={recipes} loading={loading} />
+          <button className="text-center">Pagination</button>
         </div>
       </div>
     </>
