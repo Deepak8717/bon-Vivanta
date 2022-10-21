@@ -12,7 +12,7 @@ export default function Menu() {
     (state) => state.menu
   );
   const { innerWidth } = window;
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState();
   const [desktop, setDesktop] = useState(innerWidth > 1024 ? true : false);
   const [loading, setLoading] = useState(false);
 
@@ -23,6 +23,7 @@ export default function Menu() {
     setLoading(true);
     fetchRecipes(searchQry, menuType, activeMenuWithoutChar)
       .then((data) => {
+        console.log(data);
         setRecipes(data);
         setLoading(false);
       })
@@ -31,8 +32,6 @@ export default function Menu() {
         console.log(err);
       });
   }, [searchQry, activeMenuByMenuTypes]);
-  // this is to show the horizontal nav on smaller screen
-  // console.log(recipes);
   const updateMedia = () => {
     window.innerWidth < 1024 ? setDesktop(false) : setDesktop(true);
   };
@@ -50,7 +49,10 @@ export default function Menu() {
         {!desktop && <Navbar />}
         <div className="lg:ml-60 ">
           {/* <CustomerInputWidget /> */}
-          <RecipeGrid recipeData={recipes} loading={loading} />
+          {recipes !== undefined && (
+            <RecipeGrid recipeData={recipes} loading={loading} />
+          )}
+
           <button className="text-center">Pagination</button>
         </div>
       </div>
