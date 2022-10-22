@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import RecipeCard from "./RecipeCard";
 
-const RecipeGrid = ({ recipeData, loading }) => {
+const RecipeGrid = ({ recipeData, loading, fetchNext, loadMoreLoading }) => {
   const { activeMenuByMenuTypes } = useSelector((state) => state.menu);
   return (
     <div>
@@ -30,6 +30,18 @@ const RecipeGrid = ({ recipeData, loading }) => {
           })
         )}
       </div>
+      {/* show load more button only if it's not loading or if item length is not */}
+      {loading ||
+        (recipeData.hits.length !== 0 && (
+          <div className="w-full text-center">
+            <button
+              className="mb-4 bg-green-600 p-2 rounded-lg text-white text-xl"
+              onClick={() => fetchNext()}
+            >
+              {loadMoreLoading ? "Loading...." : "Load more"}
+            </button>
+          </div>
+        ))}
     </div>
   );
 };

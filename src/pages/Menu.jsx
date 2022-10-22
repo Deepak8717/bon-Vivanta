@@ -15,6 +15,7 @@ export default function Menu() {
   const [recipes, setRecipes] = useState();
   const [desktop, setDesktop] = useState(innerWidth > 1024 ? true : false);
   const [loading, setLoading] = useState(false);
+  const [loadMoreLoading, setLoadMoreLoading] = useState(false);
 
   const activeMenuWithoutChar = activeMenuByMenuTypes.split("/")[0];
 
@@ -24,7 +25,6 @@ export default function Menu() {
     fetchRecipes(searchQry, menuType, activeMenuWithoutChar)
       .then((data) => {
         setRecipes(data);
-        console.log(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -32,7 +32,9 @@ export default function Menu() {
         console.log(err);
       });
   }, [searchQry, activeMenuByMenuTypes]);
+
   const fetchNext = () => {
+    setLoadMoreLoading(true);
     axios
       .get(recipes._links.next.href)
       .then(function (response) {
@@ -41,10 +43,12 @@ export default function Menu() {
           ...prevState,
           hits: [...recipes.hits, ...response.data.hits],
         }));
+        setLoadMoreLoading(false);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
+        setLoadMoreLoading(false);
       })
       .then(function () {
         // always executed
@@ -57,7 +61,6 @@ export default function Menu() {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   }, []);
-  console.log(recipes);
   return (
     <>
       {hamMenu ? <HamMenuModal /> : <Sidebar />}
@@ -76,14 +79,12 @@ export default function Menu() {
               </div>
             </>
           ) : (
-            <>
-              <RecipeGrid recipeData={recipes} loading={loading} />
-              <div className="w-full text-center">
-                <button className="mb-4" onClick={() => fetchNext()}>
-                  Pagination
-                </button>
-              </div>
-            </>
+            <RecipeGrid
+              recipeData={recipes}
+              loading={loading}
+              fetchNext={fetchNext}
+              loadMoreLoading={loadMoreLoading}
+            />
           )}
         </div>
       </div>
