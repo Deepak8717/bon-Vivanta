@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../layout/Navbar";
 import Sidebar from "../layout/Sidebar";
 import RecipeGrid from "../components/recipes/RecipeGrid";
-import CustomerInputWidget from "../components/sidebar/CustomerInputWidget";
 import { fetchRecipes } from "../services/fetchRecipes";
 import { useSelector } from "react-redux";
 import { HamMenuModal } from "../components/HamMenuModal";
 import { data } from "../sampleData";
+import axios from "axios";
 export default function Menu() {
   const { activeMenuByMenuTypes, menuType, searchQry, hamMenu } = useSelector(
     (state) => state.menu
@@ -23,8 +23,8 @@ export default function Menu() {
     setLoading(true);
     fetchRecipes(searchQry, menuType, activeMenuWithoutChar)
       .then((data) => {
-        console.log(data);
         setRecipes(data);
+        console.log(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -32,6 +32,24 @@ export default function Menu() {
         console.log(err);
       });
   }, [searchQry, activeMenuByMenuTypes]);
+  const fetchNext = () => {
+    axios
+      .get(recipes._links.next.href)
+      .then(function (response) {
+        // handle success
+        setRecipes((prevState) => ({
+          ...prevState,
+          hits: [...recipes.hits, ...response.data.hits],
+        }));
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  };
   const updateMedia = () => {
     window.innerWidth < 1024 ? setDesktop(false) : setDesktop(true);
   };
@@ -39,7 +57,7 @@ export default function Menu() {
     window.addEventListener("resize", updateMedia);
     return () => window.removeEventListener("resize", updateMedia);
   }, []);
-
+  console.log(recipes);
   return (
     <>
       {hamMenu ? <HamMenuModal /> : <Sidebar />}
@@ -48,12 +66,25 @@ export default function Menu() {
         {/* if it's not desktop screen sidebar disapear and navbar apear */}
         {!desktop && <Navbar />}
         <div className="lg:ml-60 ">
-          {/* <CustomerInputWidget /> */}
-          {recipes !== undefined && (
-            <RecipeGrid recipeData={recipes} loading={loading} />
+          {recipes === undefined ? (
+            <>
+              <div className="w-full h-[50vh] flex flex-col justify-center sm:col-span-2 xl:col-span-4 text-center text-5xl font-bold text-slate-600 capitalize">
+                <div className="text-2xl">
+                  Edamam recipe Api Server is down
+                  <p className="text-xl">Please try after sometime</p>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <RecipeGrid recipeData={recipes} loading={loading} />
+              <div className="w-full text-center">
+                <button className="mb-4" onClick={() => fetchNext()}>
+                  Pagination
+                </button>
+              </div>
+            </>
           )}
-
-          <button className="text-center">Pagination</button>
         </div>
       </div>
     </>
